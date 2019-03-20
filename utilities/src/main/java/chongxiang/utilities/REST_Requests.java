@@ -19,13 +19,7 @@ import javax.net.ssl.HttpsURLConnection;
  */
 
 public class REST_Requests {
-	
-	public enum requestTypes {GET, POST};
-	
-	public enum requestAuthMethods{NoAuth, Basic_Auth, Basic_Auth_X_Token, Bearer};
-	
-	public enum requestConnectionTypes {HTTP, HTTPS};
-	
+
 	private requestTypes requestType;
 	public void setRequesType(requestTypes requestType) {
 		this.requestType = requestType;

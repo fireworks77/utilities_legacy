@@ -27,10 +27,8 @@ public class MongoDBConnection {
 	public com.mongodb.client.MongoClient mongoClient;
 	public MongoDatabase db;
 	
-	private static enum Authentication_Types{NO, DEFAULT_AUTH};
-	
-	private Authentication_Types Authentication_Type;
-	public void setAuthentication_Type(Authentication_Types Authentication_Type) {
+	private Authentication_Types_MongoDB Authentication_Type;
+	public void setAuthentication_Type(Authentication_Types_MongoDB Authentication_Type) {
 		this.Authentication_Type = Authentication_Type;
 	}
 	

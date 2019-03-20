@@ -45,10 +45,8 @@ public class MSSQLConnection {
 		this.database_name = database_name;
 	}
 	
-	private static enum Authentication_Types{Windows_Auth, SQL_Auth};
-	
-	private Authentication_Types Authentication_Type;
-	public void setAuthentication_Type(Authentication_Types Authentication_Type) {
+	private Authentication_Types_MSSQL Authentication_Type;
+	public void setAuthentication_Type(Authentication_Types_MSSQL Authentication_Type) {
 		this.Authentication_Type = Authentication_Type;
 	}
 
