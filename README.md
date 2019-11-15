@@ -32,3 +32,8 @@ Personal java utilities
       <artifactId>mongo-java-driver</artifactId>
       <version>3.10.1</version>
     </dependency>
+    <dependency>
+    <groupId>org.json</groupId>
+    <artifactId>json</artifactId>
+    <version>20190722</version>
+	</dependency>
