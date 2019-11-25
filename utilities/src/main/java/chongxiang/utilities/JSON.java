@@ -11,27 +11,41 @@ public class JSON {
 	
 	private static Utilities oUtilities = new Utilities();
 
-	public static void main(String[] args) {
+	public static void main(String[] args) throws Exception{
 		// TODO Auto-generated method stub
-		/*
+		
 		JSON oJSON = new JSON();
 		String s_test = "{\"data\": [{\"hono_level\": {\"status\":true,\"100\": {\"5min\": 15,\"10min\": 20},\"200\": {\"5min\": 20, \"10min\": 25}}},{\"hono_level\": {\"status\":true,\"100\": {\"5min\": 25,\"10min\": 30},\"200\": {\"5min\": 30,\"10min\": 35}}}]"
 				+ ",\"states\":[\"Alberta\",\"Quebec\"]"
 				+ ",\"status\":true"
 				+ "}";
 		//System.out.println(oJSON.funcGetValue_JSONNODE_TWO_LAYERS(s_test, "data","hono_level"));
-		String[] arr_terms = {"data","hono_level","100","10min"};
-		String[] arr_result = oJSON.funcGetValue_JSON(s_test, arr_terms).split(",");
-		for(String s_result: arr_result) {
-			System.out.println(s_result.replace("#_#", ":").replace(";", ",").replace("##",";"));
+		String s_terms = "data.hono_level.200.10min";
+		ArrayList<String> arr_results = oJSON.funcGetValue_JSON(s_test, s_terms);
+		for(String s_result: arr_results) {
+			System.out.println(s_result);
 		}
-		*/
+		
+	}
+	
+	/*
+	 * 
+	 */
+	public ArrayList<String> funcGetValue_JSON(String s_JSON_doc, String s_terms)throws Exception{
+		ArrayList<String> arr_results = new ArrayList<String>();
+		
+		String[] arr_terms = s_terms.split("\\.");
+		String[] arr_result_top = this.funcGetValue_JSON_S(s_JSON_doc, arr_terms).split(",");
+		for(String s_result:arr_result_top) {
+			arr_results.add(s_result.replace("#_#", ":").replace(";", ",").replace("##",";"));
+		}
+		return arr_results;
 	}
 	
 	/*
 	 * General function to get value from JSON
 	 */
-	public String funcGetValue_JSON(String s_JSON_doc, String[] arr_terms)throws Exception {
+	private String funcGetValue_JSON_S(String s_JSON_doc, String[] arr_terms)throws Exception {
 		String s_result = "";
 		
 		try {
@@ -48,7 +62,7 @@ public class JSON {
 					if(arr_objs.size() > 0) {
 						for(int i=0; i<arr_objs.size(); i++) {
 							Object obj_JSON = arr_objs.get(i);
-							s_result = s_result + this.funcGetValue_JSON(obj_JSON.toString(), arr_sub_terms)+ ",";
+							s_result = s_result + this.funcGetValue_JSON_S(obj_JSON.toString(), arr_sub_terms)+ ",";
 						}
 					}else {
 						/*
