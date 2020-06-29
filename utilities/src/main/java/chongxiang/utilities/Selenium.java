@@ -23,7 +23,7 @@ public class Selenium {
 
 	
 	
-	Utilities utitlies = new Utilities();
+	private Utilities utitlies = new Utilities();
 	
 	private BrowserTypes BrowserType;
 	public void setBrowserType(BrowserTypes BrowserType) {
