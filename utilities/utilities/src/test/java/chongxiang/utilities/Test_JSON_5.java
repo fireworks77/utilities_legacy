@@ -20,10 +20,16 @@ class Test_JSON_5 {
 	@AfterEach
 	void tearDown() throws Exception {
 	}
-
+	
+	
 	@Test
 	void test() {
 		fail("Not yet implemented");
+		
+		String s_test = "Test String";
+		char[] arr_Chars = s_test.toCharArray();
+		
+		
 	}
 
 }
